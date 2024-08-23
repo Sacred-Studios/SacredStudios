@@ -230,6 +230,30 @@
         .dark-mode .contact-icon[src*="X.png"] {
             box-shadow: 0 0 15px rgba(29, 161, 242, 0.6);
         }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, #4299e1, #9f7aea);
+            color: #fff;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-section {
+            background-color: #f7fafc;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 
@@ -296,20 +320,70 @@
     </section>
 
     <!-- Video Section -->
-    <section id="video" class="py-16 px-4 bg-white text-black">
+    <section id="video" class="py-16 px-4 bg-white text-black dark:bg-gray-900 dark:text-white">
         <div class="max-w-5xl mx-auto text-center slide-in">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-black">Introducing Nebula Infinity | Second Edition</h2>
-            <p class="text-lg mb-8 text-black">Experience the next level of innovation with our latest product. Watch
-                the teaser to
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Introducing Nebula Infinity | Second Edition</h2>
+            <p class="text-lg mb-8">Experience the next level of innovation with our latest product. Watch the teaser to
                 see what makes the Nebula Infinity | Second Edition stand out.</p>
+
             <div class="video-container mx-auto mb-8">
                 <iframe src="https://www.youtube.com/embed/DBu9ErbddWw" frameborder="0" allowfullscreen></iframe>
             </div>
-            <p class="text-lg text-black">Discover the features and design of the Nebula Infinity | Second Edition in
-                our exclusive
-                teaser video. Get ready for a product that’s set to revolutionize your experience.</p>
+
+            <p class="text-lg mb-8 text-black">Discover the features and design of the Nebula Infinity | Second Edition
+                in our exclusive teaser video. Get ready for a product that’s set to revolutionize your experience.</p>
+
+            <!-- Dynamic Download Section -->
+            <div class="download-section bg-gray-100 dark:bg-gray-800 py-8 px-6 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold mb-4 text-black">Ready to Explore?</h3>
+                <p class="text-md mb-6 text-black">Download the Nebula Infinity Second Edition file and get started
+                    today.</p>
+                <a href="Downloadable/Nebula Infinity Second Edition.rbxm"
+                    download="Nebula Infinity Second Edition.rbxm"
+                    class="download-btn inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-black font-semibold py-3 px-8 rounded-full transition duration-500 transform hover:scale-110 hover:shadow-2xl mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                        class="w-6 h-6 mr-2 text-black">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                    Download Now
+                </a>
+                <!-- Help Tab -->
+                <div class="help-tab mt-8">
+                    <button id="helpTabBtn"
+                        class="inline-flex items-center justify-center bg-blue-500 text-black font-semibold py-3 px-8 rounded-full transition duration-500 transform hover:scale-105 hover:shadow-2xl">
+                        Need help with inserting the file?
+                    </button>
+                </div>
+
+                <!-- Help Video Section (Initially Hidden) -->
+                <div id="helpVideoSection" class="mt-6 hidden">
+                    <div class="video-container">
+                        <iframe id="helpVideo" src="" frameborder="0" allowfullscreen
+                            class="w-full h-64 md:h-96"></iframe>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
+    <script>
+        // Get elements for tutorial video
+        const helpTabBtn = document.getElementById('helpTabBtn');
+        const helpVideoSection = document.getElementById('helpVideoSection');
+        const helpVideo = document.getElementById('helpVideo');
+    
+        // Show the help video when the tab button is clicked
+        helpTabBtn.addEventListener('click', () => {
+            if (helpVideoSection.classList.contains('hidden')) {
+                helpVideoSection.classList.remove('hidden');
+                helpVideo.src = "https://www.youtube.com/embed/AJDlyZqdaOM"; // Set the video URL when the section is visible
+                helpVideoSection.scrollIntoView({ behavior: 'smooth' }); // Scroll to the video section
+            } else {
+                helpVideoSection.classList.add('hidden');
+                helpVideo.src = ""; // Clear the video URL when the section is hidden
+            }
+        });
+    </script>
 
     <!-- Services Section -->
     <section id="services" class="py-16 px-4 bg-gray-100 from-6482AD to-2E466B text-black">
@@ -571,6 +645,8 @@
 
         // Attach the debounced scroll handler
         window.addEventListener('scroll', debounce(handleScroll));
+
+
     </script>
 </body>
 
