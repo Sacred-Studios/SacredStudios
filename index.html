@@ -297,13 +297,42 @@
             <div class="max-w-2xl fade-in">
                 <h2 class="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">Welcome to Sacred Studios</h2>
                 <p class="text-xl mb-8 drop-shadow-md">Crafting Timeless Experiences</p>
-                <a href="#portfolio"
-                    class="bg-blue-500 text-white hover:bg-blue-700 py-3 px-6 rounded-full transition duration-500 transform hover:scale-105 shadow-lg z-20">
-                    View Our Work
-                </a>
+
+                <!-- Buttons Container -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4">
+                    <!-- Main CTA Button -->
+                    <a href="#download"
+                        class="cta-btn bg-blue-500 text-white py-3 px-6 rounded-full font-semibold text-lg transform transition duration-500 ease-in-out hover:scale-105 shadow-lg hover:bg-blue-700 hover:shadow-2xl">
+                        Download Nebula Infinity Now
+                    </a>
+                </div>
             </div>
         </div>
     </section>
+
+    <!-- Attention Seeker Animation -->
+    <style>
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+            }
+        }
+
+        .cta-btn {
+            animation: pulse 2s infinite;
+        }
+    </style>
 
     <!-- About Section -->
     <section id="about" class="py-16 px-4 bg-gray-100 text-black">
@@ -334,320 +363,324 @@
                 in our exclusive teaser video. Get ready for a product that’s set to revolutionize your experience.</p>
 
             <!-- Dynamic Download Section -->
-            <div class="download-section bg-gray-100 dark:bg-gray-800 py-8 px-6 rounded-lg shadow-lg">
-                <h3 class="text-2xl font-bold mb-4 text-black">Ready to Explore?</h3>
-                <p class="text-md mb-6 text-black">Download the Nebula Infinity Second Edition file and get started
-                    today.</p>
-                <a href="Downloadable/Nebula Infinity Second Edition.rbxm"
-                    download="Nebula Infinity Second Edition.rbxm"
-                    class="download-btn inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-black font-semibold py-3 px-8 rounded-full transition duration-500 transform hover:scale-110 hover:shadow-2xl mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                        class="w-6 h-6 mr-2 text-black">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                    </svg>
-                    Download Now
-                </a>
-                <!-- Help Tab -->
-                <div class="help-tab mt-8">
-                    <button id="helpTabBtn"
-                        class="inline-flex items-center justify-center bg-blue-500 text-black font-semibold py-3 px-8 rounded-full transition duration-500 transform hover:scale-105 hover:shadow-2xl">
-                        Need help with inserting the file?
-                    </button>
-                </div>
-
-                <!-- Help Video Section (Initially Hidden) -->
-                <div id="helpVideoSection" class="mt-6 hidden">
-                    <div class="video-container">
-                        <iframe id="helpVideo" src="" frameborder="0" allowfullscreen
-                            class="w-full h-64 md:h-96"></iframe>
+            <section id="download" class="download-section bg-gray-100">
+                <div class="download bg-gray-100 dark:bg-gray-800 py-8 px-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-black">Ready to Explore?</h3>
+                    <p class="text-md mb-6 text-black">Download the Nebula Infinity Second Edition file and get started
+                        today.</p>
+                    <a href="Downloadable/Nebula Infinity Second Edition.rbxm"
+                        download="Nebula Infinity Second Edition.rbxm"
+                        class="download-btn inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-black font-semibold py-3 px-8 rounded-full transition duration-500 transform hover:scale-110 hover:shadow-2xl mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                            class="w-6 h-6 mr-2 text-black">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Download Now
+                    </a> <!-- Help Tab -->
+                    <div class="help-tab mt-8">
+                        <button id="helpTabBtn"
+                            class="inline-flex items-center justify-center bg-blue-500 text-black font-semibold py-3 px-8 rounded-full transition duration-500 transform hover:scale-105 hover:shadow-2xl">
+                            Need help with inserting the file?
+                        </button>
                     </div>
+            </section>
+
+
+            <!-- Help Video Section (Initially Hidden) -->
+            <div id="helpVideoSection" class="mt-6 hidden">
+                <div class="video-container">
+                    <iframe id="helpVideo" src="" frameborder="0" allowfullscreen class="w-full h-64 md:h-96"></iframe>
                 </div>
             </div>
         </div>
-    </section>
-
-    <script>
-        // Get elements for tutorial video
-        const helpTabBtn = document.getElementById('helpTabBtn');
-        const helpVideoSection = document.getElementById('helpVideoSection');
-        const helpVideo = document.getElementById('helpVideo');
-    
-        // Show the help video when the tab button is clicked
-        helpTabBtn.addEventListener('click', () => {
-            if (helpVideoSection.classList.contains('hidden')) {
-                helpVideoSection.classList.remove('hidden');
-                helpVideo.src = "https://www.youtube.com/embed/AJDlyZqdaOM"; // Set the video URL when the section is visible
-                helpVideoSection.scrollIntoView({ behavior: 'smooth' }); // Scroll to the video section
-            } else {
-                helpVideoSection.classList.add('hidden');
-                helpVideo.src = ""; // Clear the video URL when the section is hidden
-            }
-        });
-    </script>
-
-    <!-- Services Section -->
-    <section id="services" class="py-16 px-4 bg-gray-100 from-6482AD to-2E466B text-black">
-        <div class="max-w-5xl mx-auto text-center fade-in">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12">Our Service</h2>
-            <div
-                class="p-8 bg-white bg-opacity-10 rounded-lg transform hover:scale-110 transition duration-500 text-black">
-                <div class="mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-black" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M9.75 17L15 12l-5.25-5" />
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-bold mb-4">Roblox Scripting</h3>
-                <p class="text-lg text-black">We offer expert Roblox scripting services, specializing in Luau. Whether
-                    you're looking to create custom game mechanics, enhance your existing projects, or develop new
-                    features, our focus is on delivering precise and effective solutions tailored to your needs. Let us
-                    help you bring your Roblox game ideas to life with clean, efficient, and optimized code.</p>
-            </div>
         </div>
-    </section>
+        <br>
+        <script>
+            // Get elements for tutorial video
+            const helpTabBtn = document.getElementById('helpTabBtn');
+            const helpVideoSection = document.getElementById('helpVideoSection');
+            const helpVideo = document.getElementById('helpVideo');
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-16 px-4 bg-white text-black">
-        <div class="max-w-5xl mx-auto text-center slide-in">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12">Our Portfolio</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 portfolio-item">
-                <!-- Portfolio Item 1 -->
-                <div class="relative">
-                    <img src="images/Portfolio/Portfolio1.png" alt="Project 1" class="w-full h-auto">
-                    <div
-                        class="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity duration-500 flex items-center justify-center">
-                        <span class="text-white text-lg font-bold">Client sided loader for an admin panel.</span>
-                    </div>
-                </div>
-                <!-- Portfolio Item 2 -->
-                <div class="relative">
-                    <img src="images/Portfolio/Portfolio3.png" alt="Project 2" class="w-full h-auto">
-                    <div
-                        class="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity duration-500 flex items-center justify-center">
-                        <span class="text-white text-lg font-bold">Server sided loader for an admin panel.</span>
-                    </div>
-                </div>
-                <!-- Portfolio Item 3 -->
-                <div class="relative">
-                    <img src="images/Portfolio/Portfolio3.png" alt="Project 3" class="w-full h-auto">
-                    <div
-                        class="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity duration-500 flex items-center justify-center">
-                        <span class="text-white text-lg font-bold">A notification system, for an admin panel.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            // Show the help video when the tab button is clicked
+            helpTabBtn.addEventListener('click', () => {
+                if (helpVideoSection.classList.contains('hidden')) {
+                    helpVideoSection.classList.remove('hidden');
+                    helpVideo.src = "https://www.youtube.com/embed/AJDlyZqdaOM"; // Set the video URL when the section is visible
+                    helpVideoSection.scrollIntoView({ behavior: 'smooth' }); // Scroll to the video section
+                } else {
+                    helpVideoSection.classList.add('hidden');
+                    helpVideo.src = ""; // Clear the video URL when the section is hidden
+                }
+            });
+        </script>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-16 px-4 bg-gray-100 text-black">
-        <div class="max-w-5xl mx-auto text-center fade-in">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12">From Clients</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="p-8 bg-white rounded-lg shadow-md">
-                    <p class="testimonial-text mb-4">"Super work! The quality of your effort is clear to see."</p>
-                    <h3 class="testimonial-name font-bold text-lg">Mystery_Zak</h3>
-                    <p class="text-sm">Roblox, In-game chat</p>
-                </div>
-                <!-- Testimonial 2 -->
-                <div class="p-8 bg-white rounded-lg shadow-md">
-                    <p class="testimonial-text mb-4">"It’s working exactly as needed. I really appreciate your
-                        assistance!"</p>
-                    <h3 class="testimonial-name font-bold text-lg">jackzgamedev</h3>
-                    <p class="text-sm">Discord, Direct Message</p>
-                </div>
-                <!-- Testimonial 3 -->
-                <div class="p-8 bg-white rounded-lg shadow-md">
-                    <p class="testimonial-text mb-4">"I look forward to the opportunity to collaborate again in the near
-                        future."</p>
-                    <h3 class="testimonial-name font-bold text-lg">Moeny_Official</h3>
-                    <p class="text-sm">Discord, Direct Message </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 px-4 bg-gradient-to-r from-6482AD to-3B4B63 text-black">
-        <div class="max-w-5xl mx-auto text-center slide-in">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12">Connect With Us</h2>
-            <p class="text-lg mb-8 text-black">We're always ready to collaborate! Reach out to us on any of these
-                platforms:</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                <!-- Discord Contact -->
+        <!-- Services Section -->
+        <section id="services" class="py-16 px-4 bg-gray-100 from-6482AD to-2E466B text-black">
+            <div class="max-w-5xl mx-auto text-center fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12">Our Service</h2>
                 <div
-                    class="p-8 bg-white bg-opacity-20 rounded-lg transform hover:scale-105 transition duration-500 text-black">
+                    class="p-8 bg-white bg-opacity-10 rounded-lg transform hover:scale-110 transition duration-500 text-black">
                     <div class="mb-4">
-                        <img src="images/Icons/Discord.png" alt="Discord Icon" class="h-12 w-12 mx-auto contact-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-black" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9.75 17L15 12l-5.25-5" />
+                        </svg>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Discord</h3>
-                    <p class="mb-6 text-black">Join our Discord community to chat with us directly, get support, and
-                        stay updated on the latest news.</p>
-                    <a href="https://discord.gg/eNHRKZcwUa" target="_blank"
-                        class="bg-4E6C92 text-black py-3 px-8 rounded-full shadow-md hover:bg-2E466B transition duration-300 transform hover:scale-105">
-                        Join Discord
-                    </a>
+                    <h3 class="text-2xl font-bold mb-4">Roblox Scripting</h3>
+                    <p class="text-lg text-black">We offer expert Roblox scripting services, specializing in Luau.
+                        Whether
+                        you're looking to create custom game mechanics, enhance your existing projects, or develop new
+                        features, our focus is on delivering precise and effective solutions tailored to your needs. Let
+                        us
+                        help you bring your Roblox game ideas to life with clean, efficient, and optimized code.</p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Roblox Contact -->
-                <div
-                    class="p-8 bg-white bg-opacity-20 rounded-lg transform hover:scale-105 transition duration-500 text-black">
-                    <div class="mb-4">
-                        <img src="images/Icons/Roblox.svg" alt="Roblox Icon" class="h-12 w-12 mx-auto contact-icon">
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-16 px-4 bg-white text-black">
+            <div class="max-w-5xl mx-auto text-center slide-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12">Our Portfolio</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 portfolio-item">
+                    <!-- Portfolio Item 1 -->
+                    <div class="relative">
+                        <img src="images/Portfolio/Portfolio1.png" alt="Project 1" class="w-full h-auto">
+                        <div
+                            class="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white text-lg font-bold">Project 1</span>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">Roblox</h3>
-                    <p class="mb-6 text-black">Explore our Roblox profile to see our latest creations and projects.
-                        Connect with us for collaborations or commissions.</p>
-                    <a href="https://twitter.com/zeyan99645177" target="_blank"
-                        class="bg-4E6C92 text-black py-3 px-8 rounded-full shadow-md hover:bg-2E466B transition duration-300 transform hover:scale-105">
-                        Visit Roblox
-                    </a>
-                </div>
-
-                <!-- X Contact -->
-                <div
-                    class="p-8 bg-white bg-opacity-20 rounded-lg transform hover:scale-105 transition duration-500 text-black">
-                    <div class="mb-4">
-                        <img src="images/Icons/X.png" alt="X Icon" class="h-12 w-12 mx-auto contact-icon">
+                    <!-- Portfolio Item 2 -->
+                    <div class="relative">
+                        <img src="images/Portfolio/Portfolio3.png" alt="Project 2" class="w-full h-auto">
+                        <div
+                            class="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white text-lg font-bold">Project 2</span>
+                        </div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">X (formerly Twitter)</h3>
-                    <p class="mb-6 text-black">Follow us on X for updates, news, and more. Engage with us directly
-                        through tweets and messages.</p>
-                    <a href="https://twitter.com/zeyan99645177" target="_blank"
-                        class="bg-4E6C92 text-black py-3 px-8 rounded-full shadow-md hover:bg-2E466B transition duration-300 transform hover:scale-105">
-                        Follow Us on X
-                    </a>
+                    <!-- Portfolio Item 3 -->
+                    <div class="relative">
+                        <img src="images/Portfolio/Portfolio4.png" alt="Project 3" class="w-full h-auto">
+                        <div
+                            class="absolute inset-0 bg-black opacity-0 hover:opacity-75 transition-opacity duration-500 flex items-center justify-center">
+                            <span class="text-white text-lg font-bold">Project 3</span>
+                        </div>
+                    </div>
                 </div>
-    </section>
+            </div>
+        </section>
 
-    <!-- Dark Mode Toggle Button -->
-    <button id="darkModeToggle"
-        class="fixed bottom-4 left-4 p-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 hover:shadow-xl active:scale-95 focus:outline-none">
-        <!-- Sun Icon for Light Mode -->
-        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M12 5V3m0 18v-2M7.05 7.05L5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636L16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" />
-        </svg>
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-16 px-4 bg-gray-100 text-black">
+            <div class="max-w-5xl mx-auto text-center fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12">From Clients</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="p-8 bg-white rounded-lg shadow-md">
+                        <p class="testimonial-text mb-4">"Super work! The quality of your effort is clear to see."</p>
+                        <h3 class="testimonial-name font-bold text-lg">Mystery_Zak</h3>
+                        <p class="text-sm text-black">Roblox, In-game chat</p>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="p-8 bg-white rounded-lg shadow-md">
+                        <p class="testimonial-text mb-4">"It’s working exactly as needed. I really appreciate your
+                            assistance!"</p>
+                        <h3 class="testimonial-name font-bold text-lg">jackzgamedev</h3>
+                        <p class="text-sm text-black">Discord, Direct Message</p>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="p-8 bg-white rounded-lg shadow-md">
+                        <p class="testimonial-text mb-4">"I look forward to the opportunity to collaborate again in the
+                            near
+                            future."</p>
+                        <h3 class="testimonial-name font-bold text-lg">Moeny_Official</h3>
+                        <p class="text-sm text-black">Discord, Direct Message </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <!-- Moon Icon for Dark Mode -->
-        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M12 21a9 9 0 0 1-.5-17.986V3c-.354.966-.5 1.911-.5 3a9 9 0 0 0 9 9c.239 0 .254.018.488 0A9.004 9.004 0 0 1 12 21Z" />
-        </svg>
-    </button>
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 px-4 bg-gradient-to-r from-6482AD to-3B4B63 text-black">
+            <div class="max-w-5xl mx-auto text-center slide-in">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12">Connect With Us</h2>
+                <p class="text-lg mb-8 text-black">We're always ready to collaborate! Reach out to us on any of these
+                    platforms:</p>
 
-    <!-- Footer -->
-    <footer class="py-8 bg-gray-100 from-4E6C92 to-3B4B63 text-black dark:bg-gray-800">
-        <div class="max-w-5xl mx-auto text-center">
-            <p class="mb-4 text-lg text-black font-semibold">
-                &copy; <span id="currentYear"></span> Sacred Studios. All rights reserved.
-            </p>
-            <p class="text-black">
-                Website crafted with dedication by
-                <a href="https://moenyofficial.github.io/public/" target="_blank"
-                    class="underline hover:text-gray-500 transition-colors duration-300">MoenyOfficial</a>.
-            </p>
-            <p class="mt-4 text-xs text-black">
-                Last updated on <span id="lastModified"></span>.
-            </p>
-        </div>
-    </footer>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <!-- Discord Contact -->
+                    <div
+                        class="p-8 bg-white bg-opacity-20 rounded-lg transform hover:scale-105 transition duration-500 text-black">
+                        <div class="mb-4">
+                            <img src="images/Icons/Discord.png" alt="Discord Icon"
+                                class="h-12 w-12 mx-auto contact-icon">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Discord</h3>
+                        <p class="mb-6 text-black">Join our Discord community to chat with us directly, get support, and
+                            stay updated on the latest news.</p>
+                        <a href="https://discord.gg/eNHRKZcwUa" target="_blank"
+                            class="bg-4E6C92 text-black py-3 px-8 rounded-full shadow-md hover:bg-2E466B transition duration-300 transform hover:scale-105">
+                            Join Discord
+                        </a>
+                    </div>
 
-    <script>
-        // Dynamically update the year in the footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+                    <!-- Roblox Contact -->
+                    <div
+                        class="p-8 bg-white bg-opacity-20 rounded-lg transform hover:scale-105 transition duration-500 text-black">
+                        <div class="mb-4">
+                            <img src="images/Icons/Roblox.svg" alt="Roblox Icon" class="h-12 w-12 mx-auto contact-icon">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Roblox</h3>
+                        <p class="mb-6 text-black">Explore our Roblox profile to see our latest creations and projects.
+                            Connect with us for collaborations or commissions.</p>
+                        <a href="https://twitter.com/zeyan99645177" target="_blank"
+                            class="bg-4E6C92 text-black py-3 px-8 rounded-full shadow-md hover:bg-2E466B transition duration-300 transform hover:scale-105">
+                            Visit Roblox
+                        </a>
+                    </div>
 
-        // Dynamically update the last modified date of the webpage
-        document.getElementById('lastModified').textContent = document.lastModified;
-    </script>
+                    <!-- X Contact -->
+                    <div
+                        class="p-8 bg-white bg-opacity-20 rounded-lg transform hover:scale-105 transition duration-500 text-black">
+                        <div class="mb-4">
+                            <img src="images/Icons/X.png" alt="X Icon" class="h-12 w-12 mx-auto contact-icon">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">X (formerly Twitter)</h3>
+                        <p class="mb-6 text-black">Follow us on X for updates, news, and more. Engage with us directly
+                            through tweets and messages.</p>
+                        <a href="https://twitter.com/zeyan99645177" target="_blank"
+                            class="bg-4E6C92 text-black py-3 px-8 rounded-full shadow-md hover:bg-2E466B transition duration-300 transform hover:scale-105">
+                            Follow Us on X
+                        </a>
+                    </div>
+        </section>
 
-    <script>
+        <!-- Dark Mode Toggle Button -->
+        <button id="darkModeToggle"
+            class="fixed bottom-4 left-4 p-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white rounded-full shadow-lg transition-all duration-300 transform hover:scale-110 hover:shadow-xl active:scale-95 focus:outline-none">
+            <!-- Sun Icon for Light Mode -->
+            <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 5V3m0 18v-2M7.05 7.05L5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636L16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" />
+            </svg>
 
-        // Mobile menu toggle
-        const menuButton = document.getElementById('menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+            <!-- Moon Icon for Dark Mode -->
+            <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 21a9 9 0 0 1-.5-17.986V3c-.354.966-.5 1.911-.5 3a9 9 0 0 0 9 9c.239 0 .254.018.488 0A9.004 9.004 0 0 1 12 21Z" />
+            </svg>
+        </button>
 
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        <!-- Footer -->
+        <footer class="py-8 bg-gray-100 from-4E6C92 to-3B4B63 text-black dark:bg-gray-800">
+            <div class="max-w-5xl mx-auto text-center">
+                <p class="mb-4 text-lg text-black font-semibold">
+                    &copy; <span id="currentYear"></span> Sacred Studios. All rights reserved.
+                </p>
+                <p class="text-black">
+                    Website crafted with dedication by
+                    <a href="https://moenyofficial.github.io/public/" target="_blank"
+                        class="underline hover:text-gray-500 transition-colors duration-300">MoenyOfficial</a>.
+                </p>
+                <p class="mt-4 text-xs text-black">
+                    Last updated on <span id="lastModified"></span>.
+                </p>
+            </div>
+        </footer>
 
-        // Header scroll effect
-        document.addEventListener('scroll', function () {
-            const header = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+        <script>
+            // Dynamically update the year in the footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Dynamically update the last modified date of the webpage
+            document.getElementById('lastModified').textContent = document.lastModified;
+        </script>
+
+        <script>
+
+            // Mobile menu toggle
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Header scroll effect
+            document.addEventListener('scroll', function () {
+                const header = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Function to toggle dark mode
+            function toggleDarkMode() {
+                const body = document.body;
+                const icon = document.getElementById('darkModeIcon');
+                body.classList.toggle('dark-mode');
+
+                if (body.classList.contains('dark-mode')) {
+                    icon.setAttribute('d', 'M12 3v1m0 16v1m7-7h-1M4 12H3m13.36-6.36l-.71.71M5.64 17.36l-.71-.71m12.02-.71l-.71.71M5.64 5.64l-.71-.71m14.14 6.36a9 9 0 11-9-9 9 9 0 019 9z');
+                } else {
+                    icon.setAttribute('d', 'M12 3v1m0 16v1m7-7h-1M4 12H3m13.36-6.36l-.71.71M5.64 17.36l-.71-.71m12.02-.71l-.71.71M5.64 5.64l-.71-.71m14.14 6.36a9 9 0 11-9-9 9 9 0 019 9z');
+                }
             }
-        });
 
-        // Function to toggle dark mode
-        function toggleDarkMode() {
-            const body = document.body;
-            const icon = document.getElementById('darkModeIcon');
-            body.classList.toggle('dark-mode');
+            // Attach the toggle function to the button
+            document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
 
-            if (body.classList.contains('dark-mode')) {
-                icon.setAttribute('d', 'M12 3v1m0 16v1m7-7h-1M4 12H3m13.36-6.36l-.71.71M5.64 17.36l-.71-.71m12.02-.71l-.71.71M5.64 5.64l-.71-.71m14.14 6.36a9 9 0 11-9-9 9 9 0 019 9z');
-            } else {
-                icon.setAttribute('d', 'M12 3v1m0 16v1m7-7h-1M4 12H3m13.36-6.36l-.71.71M5.64 17.36l-.71-.71m12.02-.71l-.71.71M5.64 5.64l-.71-.71m14.14 6.36a9 9 0 11-9-9 9 9 0 019 9z');
+            // Check if dark mode was previously enabled
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
             }
-        }
 
-        // Attach the toggle function to the button
-        document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
+            // Save the dark mode state in localStorage
+            document.body.addEventListener('classListChanged', () => {
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            });
 
-        // Check if dark mode was previously enabled
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-        }
-
-        // Save the dark mode state in localStorage
-        document.body.addEventListener('classListChanged', () => {
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                localStorage.setItem('darkMode', 'disabled');
-            }
-        });
-
-        // Debounce function to limit the rate at which a function can fire
-        function debounce(func, wait = 20, immediate = true) {
-            let timeout;
-            return function () {
-                const context = this, args = arguments;
-                const later = function () {
-                    timeout = null;
-                    if (!immediate) func.apply(context, args);
+            // Debounce function to limit the rate at which a function can fire
+            function debounce(func, wait = 20, immediate = true) {
+                let timeout;
+                return function () {
+                    const context = this, args = arguments;
+                    const later = function () {
+                        timeout = null;
+                        if (!immediate) func.apply(context, args);
+                    };
+                    const callNow = immediate && !timeout;
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                    if (callNow) func.apply(context, args);
                 };
-                const callNow = immediate && !timeout;
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-                if (callNow) func.apply(context, args);
-            };
-        }
-
-        const navbar = document.getElementById('navbar');
-
-        window.addEventListener('scroll', function () {
-            const header = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
             }
-        });
 
-        // Attach the debounced scroll handler
-        window.addEventListener('scroll', debounce(handleScroll));
+            const navbar = document.getElementById('navbar');
+
+            window.addEventListener('scroll', function () {
+                const header = document.getElementById('navbar');
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Attach the debounced scroll handler
+            window.addEventListener('scroll', debounce(handleScroll));
 
 
-    </script>
+        </script>
 </body>
 
 </html>
